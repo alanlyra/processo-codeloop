@@ -1,0 +1,143 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-grid>
+            <ion-row>
+              <ion-col>
+                  <ion-icon name="arrow-back" (click)="closeModal()"></ion-icon>
+              </ion-col>
+              <ion-col>
+                  <ion-title>
+                      Visualizar Estudantes
+                  </ion-title>
+              </ion-col>
+              <ion-col>
+              </ion-col>
+            </ion-row>
+        </ion-grid>  
+    </ion-toolbar>
+  </ion-header>
+ 
+<ion-content>
+ 
+  <ion-list #mylist>
+ 
+    <ion-list-header>
+      <ion-label>Estudantes Cadastrados</ion-label>
+    </ion-list-header>
+ 
+    <ion-item-sliding *ngFor="let item of items">
+ 
+      <ion-item>
+        <ion-label text-wrap>
+            <ion-grid>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>Nome: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.nome }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>Data de Nascimento: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.dataNasc | date: 'dd/MM/yyy' }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>Série de Ingresso: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.serie }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>Rua: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.rua }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>Número: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.numero }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>Complemento: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.complemento }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>Bairro: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.bairro }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>Cidade: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.cidade }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>Estado: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.estado }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>Nome da Mãe: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.nomeMae }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>CPF da Mãe: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.cpfMae }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  
+                  <ion-col>
+                      <h3><b>Data de Pgto: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.dataPgto | date: 'dd/MM/yyy' }}</h3>
+                  </ion-col>
+                </ion-row>
+            </ion-grid>
+          <p>Ultima modificação: {{ item.modified | date:'dd/MM/yyyy H:mm'}}</p>
+        </ion-label>
+      </ion-item>
+ 
+      <ion-item-options side="end">
+        <ion-item-option color="secondary" (click)="openModalEditar(item)">Editar</ion-item-option>
+        <ion-item-option color="danger" (click)="deleteItem(item)">Excluir</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+ 
+  </ion-list>
+ 
+</ion-content>

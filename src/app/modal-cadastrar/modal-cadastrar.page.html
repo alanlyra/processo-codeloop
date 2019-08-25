@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-grid>
+          <ion-row>
+            <ion-col>
+                <ion-icon name="arrow-back" (click)="closeModal()"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-title>
+                    Cadastro
+                </ion-title>
+            </ion-col>
+            <ion-col>
+            </ion-col>
+          </ion-row>
+      </ion-grid>  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+        <ion-item>
+          <ion-label position="stacked">Nome Completo <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text" type="text" maxlength="100" [(ngModel)]="novoEstudante.nome"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Data de Nascimento <ion-text color="danger">*</ion-text></ion-label>
+          <ion-datetime required displayFormat="DD/MMMM/YYYY" cancelText="Cancelar" [(ngModel)]="novoEstudante.dataNasc"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Série de Ingresso <ion-text color="danger">*</ion-text></ion-label>
+            <ion-select okText="Aplicar" cancelText="Cancelar" [(ngModel)]="novoEstudante.serie" >
+                <ion-select-option value="1º Ano">1º Ano</ion-select-option>
+                <ion-select-option value="2º Ano">2º Ano</ion-select-option>
+                <ion-select-option value="3º Ano">3º Ano</ion-select-option>
+                <ion-select-option value="4º Ano">4º Ano</ion-select-option>
+                <ion-select-option value="5º Ano">5º Ano</ion-select-option>
+                <ion-select-option value="6º Ano">6º Ano</ion-select-option>
+                <ion-select-option value="7º Ano">7º Ano</ion-select-option>
+                <ion-select-option value="8º Ano">8º Ano</ion-select-option>
+                <ion-select-option value="9º Ano">9º Ano</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">CEP <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input (keyup)="onKeyUp($event)" [(ngModel)]="novoEstudante.cep"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Rua <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input type="text" maxlength="120" [(ngModel)]="novoEstudante.rua"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Número <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input (keyup)="onKeyUp($event)" [(ngModel)]="novoEstudante.numero"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Complemento <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input type="text" maxlength="50" [(ngModel)]="novoEstudante.complemento"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Bairro <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input type="text" maxlength="100" [(ngModel)]="novoEstudante.bairro"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Cidade <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input type="text" maxlength="50" [(ngModel)]="novoEstudante.cidade"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Estado <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input id="estado" type="text" maxlength="50" [(ngModel)]="novoEstudante.estado"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Nome da Mãe <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input type="text" maxlength="100" [(ngModel)]="novoEstudante.nomeMae"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">CPF da Mãe <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input (keyup)="onKeyUp($event)" [(ngModel)]="novoEstudante.cpfMae"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="stacked">Data de Pagamento <ion-text color="danger">*</ion-text></ion-label>
+            <ion-datetime displayFormat="DD/MMMM/YYYY" cancelText="Cancelar" [(ngModel)]="novoEstudante.dataPgto"></ion-datetime>
+          </ion-item>
+
+      <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button color="danger" expand="full" (click)="closeModal()">Cancelar</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button expand="full" (click)="addItem()">Cadastrar</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+  </ion-content>
+ 

@@ -19,7 +19,7 @@
  
 <ion-content>
  
-  <ion-list #mylist>
+  <ion-list #listaEstudantes>
  
     <ion-list-header>
       <ion-label>Estudantes Cadastrados</ion-label>
@@ -52,6 +52,14 @@
                   </ion-col>
                   <ion-col>
                       <h3>{{ item.serie }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <h3><b>CEP: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.cep }}</h3>
                   </ion-col>
                 </ion-row>
                 <ion-row>

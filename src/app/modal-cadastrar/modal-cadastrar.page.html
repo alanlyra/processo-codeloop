@@ -85,7 +85,7 @@
 
         <ion-item>
             <ion-label position="stacked">CPF da Mãe <ion-text color="danger">*</ion-text></ion-label>
-            <ion-input (keyup)="onKeyUp($event)" [(ngModel)]="novoEstudante.cpfMae"></ion-input>
+            <ion-input mask="(***)***-****" (keyup)="onKeyUp($event)" [(ngModel)]="novoEstudante.cpfMae"></ion-input>
         </ion-item>
 
         <ion-item>

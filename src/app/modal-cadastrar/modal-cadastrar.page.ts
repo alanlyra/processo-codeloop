@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { StorageService, Estudante } from '../services/storage.service';
+import { StorageService, Estudante, GlobalFunctions } from '../services/storage.service';
 import { ModalController, NavParams, Platform, ToastController, IonList } from '@ionic/angular';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -14,24 +15,17 @@ export class ModalCadastrarPage implements OnInit {
   
   novoEstudante: Estudante = <Estudante>{};
 
-  modalTitle:string;
-  modelId:number;
-
-  @ViewChild('mylist', {static: false})mylist: IonList;
+  @ViewChild('listaEstudantes', {static: false})listaEstudantes: IonList;
  
-  constructor(private storageService: StorageService, private plt: Platform, private toastController: ToastController, private modalController: ModalController,
+  constructor(private globalFunctions: GlobalFunctions, private storageService: StorageService, private plt: Platform, private toastController: ToastController, private modalController: ModalController,
     private navParams: NavParams) {
     this.plt.ready().then(() => {
       this.loadItems();
     });
-
-    
   }
 
   ngOnInit() {
-    console.table(this.navParams);
-    this.modelId = this.navParams.data.paramID;
-    this.modalTitle = this.navParams.data.paramTitle;
+ 
   }
 
   async closeModal() {
@@ -40,17 +34,13 @@ export class ModalCadastrarPage implements OnInit {
  
   // CREATE
   addItem() {
-
-    if(this.novoEstudante.nome == 'as') {
-      this.showToast('Item MISSING!')
-    }
-    else {
+    if(this.globalFunctions.validarDados(this.novoEstudante)) {
       this.novoEstudante.modified = Date.now();
       this.novoEstudante.id = Date.now();
   
       this.storageService.addItem(this.novoEstudante).then(item => {
         this.novoEstudante = <Estudante>{};
-        this.showToast('Estudante Cadastrado!')
+        this.globalFunctions.showToast('Estudante Cadastrado!')
         this.loadItems();
         this.closeModal();
       });
@@ -63,18 +53,9 @@ export class ModalCadastrarPage implements OnInit {
       this.items = items;
     });
   }
- 
-  // Helper
-  async showToast(msg) {
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: 2000
-    });
-    toast.present();
-  }
-
-  public onKeyUp(event: any) {
-
+  
+  //PERMISSÃO PARA DIGITAR APENAS NÚMEROS
+  onKeyUp(event: any) {
     const NUMBER_REGEXP = /^\s*(\-|\+)?(\d+|(\d*(\.\d*)))([eE][+-]?\d+)?\s*$/;
     let newValue = event.target.value;
     let regExp = new RegExp(NUMBER_REGEXP);

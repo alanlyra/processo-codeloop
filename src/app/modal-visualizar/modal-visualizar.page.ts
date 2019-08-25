@@ -20,7 +20,7 @@ export class ModalVisualizarPage implements OnInit {
 
   dataReturned:any;
  
-  @ViewChild('mylist', {static: false})mylist: IonList;
+  @ViewChild('listaEstudantes', {static: false})listaEstudantes: IonList;
  
   constructor(private storageService: StorageService, private plt: Platform, private toastController: ToastController, private modalController: ModalController,
     private navParams: NavParams) {
@@ -60,7 +60,7 @@ export class ModalVisualizarPage implements OnInit {
   deleteItem(item: Estudante) {
     this.storageService.deleteItem(item.id).then(item => {
       this.showToast('Item removed!');
-      this.mylist.closeSlidingItems();
+      this.listaEstudantes.closeSlidingItems();
       this.loadItems();
     });
   }

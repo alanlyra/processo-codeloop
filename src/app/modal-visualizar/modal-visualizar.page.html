@@ -16,14 +16,16 @@
         </ion-grid>  
     </ion-toolbar>
   </ion-header>
- 
+
+  <ion-toolbar color="light">
+      <ion-title text-center>
+          <h4>Lista de Estudantes</h4>
+      </ion-title>
+    </ion-toolbar>  
+
 <ion-content>
- 
+
   <ion-list #listaEstudantes>
- 
-    <ion-list-header>
-      <ion-label>Estudantes Cadastrados</ion-label>
-    </ion-list-header>
  
     <ion-item-sliding *ngFor="let item of items">
  
@@ -126,24 +128,41 @@
                       <h3>{{ item.cpfMae }}</h3>
                   </ion-col>
                 </ion-row>
-                <ion-row>
-                  
+                <ion-row>            
                   <ion-col>
-                      <h3><b>Data de Pgto: </b></h3>
+                      <h3><b>Data de Pagamento: </b></h3>
+                  </ion-col>
+                  <ion-col>
+                      <h3>{{ item.dataPgto | date: 'dd/MM/yyy' }}</h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row>                  
+                  <ion-col>
+                      <h3><b>Data de Pagamento: </b></h3>
                   </ion-col>
                   <ion-col>
                       <h3>{{ item.dataPgto | date: 'dd/MM/yyy' }}</h3>
                   </ion-col>
                 </ion-row>
             </ion-grid>
-          <p>Ultima modificação: {{ item.modified | date:'dd/MM/yyyy H:mm'}}</p>
+          
+          <ion-grid>
+              <ion-row>
+                  <ion-col>
+                      <ion-button color="light" expand="full" (click)="openModalEditar(item)"><ion-icon name="create" color="primary"></ion-icon></ion-button>
+                  </ion-col>
+                  <ion-col>
+                      <ion-button color="light" expand="full" (click)="deleteItem(item)"><ion-icon name="trash" color="danger"></ion-icon></ion-button>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      
+          <p text-center>
+              Ultima modificação: {{ item.modified | date:'dd/MM/yyyy H:mm'}}
+          </p>
+        
         </ion-label>
-      </ion-item>
- 
-      <ion-item-options side="end">
-        <ion-item-option color="secondary" (click)="openModalEditar(item)">Editar</ion-item-option>
-        <ion-item-option color="danger" (click)="deleteItem(item)">Excluir</ion-item-option>
-      </ion-item-options>
+      </ion-item> 
     </ion-item-sliding>
  
   </ion-list>

@@ -82,7 +82,7 @@ export class ModalEditarPage implements OnInit {
     this.estudanteEditar.modified = Date.now();
  
     this.storageService.updateItem(this.estudanteEditar).then(item => {
-      this.globalFunctions.showToast('Estudante editado!');
+      this.globalFunctions.showToast('Estudante editado com sucesso!');
       this.loadItems(); 
       this.closeModal();
     });

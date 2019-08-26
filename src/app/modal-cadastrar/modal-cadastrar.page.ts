@@ -9,7 +9,7 @@ import { AppComponent } from '../app.component';
   templateUrl: './modal-cadastrar.page.html',
   styleUrls: ['./modal-cadastrar.page.scss'],
 })
-export class ModalCadastrarPage implements OnInit {
+export class ModalCadastrarPage {
 
   items: Estudante[] = [];
   
@@ -23,11 +23,6 @@ export class ModalCadastrarPage implements OnInit {
       this.loadItems();
     });
   }
-
-  ngOnInit() {
- 
-  }
-
   async closeModal() {
     await this.modalController.dismiss();
   }
@@ -40,7 +35,7 @@ export class ModalCadastrarPage implements OnInit {
   
       this.storageService.addItem(this.novoEstudante).then(item => {
         this.novoEstudante = <Estudante>{};
-        this.globalFunctions.showToast('Estudante Cadastrado!')
+        this.globalFunctions.showToast('Estudante Cadastrado com sucesso!')
         this.loadItems();
         this.closeModal();
       });

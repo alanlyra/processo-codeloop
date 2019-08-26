@@ -9,14 +9,11 @@ import { ModalEditarPage } from '../modal-editar/modal-editar.page';
   templateUrl: './modal-visualizar.page.html',
   styleUrls: ['./modal-visualizar.page.scss'],
 })
-export class ModalVisualizarPage implements OnInit {
+export class ModalVisualizarPage {
 
   items: Estudante[] = [];
  
   novoEstudante: Estudante = <Estudante>{};
-
-  modalTitle:string;
-  modelId:number;
 
   dataReturned:any;
  
@@ -27,11 +24,6 @@ export class ModalVisualizarPage implements OnInit {
     this.plt.ready().then(() => {
       this.loadItems();
     });
-  }
-
-  ngOnInit() {
-    this.modelId = this.navParams.data.paramID;
-    this.modalTitle = this.navParams.data.paramTitle;
   }
 
   async closeModal() {
@@ -59,7 +51,7 @@ export class ModalVisualizarPage implements OnInit {
   // DELETE
   deleteItem(item: Estudante) {
     this.storageService.deleteItem(item.id).then(item => {
-      this.showToast('Item removed!');
+      this.showToast('Estudante removido com sucesso!');
       this.listaEstudantes.closeSlidingItems();
       this.loadItems();
     });

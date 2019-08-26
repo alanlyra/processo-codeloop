@@ -3,7 +3,6 @@ import { StorageService, Estudante, GlobalFunctions } from '../services/storage.
 import { ModalController, NavParams, Platform, ToastController, IonList } from '@ionic/angular';
 import { AppComponent } from '../app.component';
 
-
 @Component({
   selector: 'app-modal-cadastrar',
   templateUrl: './modal-cadastrar.page.html',
@@ -23,11 +22,13 @@ export class ModalCadastrarPage {
       this.loadItems();
     });
   }
+
+  //FUNÇÃO PARA FECHAR O MODAL DE CADASTRO
   async closeModal() {
     await this.modalController.dismiss();
   }
  
-  // CREATE
+  //ADICIONAR ESTUDANTE
   addItem() {
     if(this.globalFunctions.validarDados(this.novoEstudante)) {
       this.novoEstudante.modified = Date.now();
@@ -42,7 +43,7 @@ export class ModalCadastrarPage {
     }
   }
  
-  // READ
+  //LER DADOS DOS ESTUDANTES
   loadItems() {
     this.storageService.getItems().then(items => {
       this.items = items;

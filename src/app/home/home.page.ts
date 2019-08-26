@@ -9,46 +9,30 @@ import { ModalVisualizarPage } from '../modal-visualizar/modal-visualizar.page';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
- 
-  dataReturned:any;
- 
+
   constructor(
     public modalController: ModalController
   ) { }
  
+  //FUNÇÃO PARA ABRIR MODAL DE CADASTRO
   async openModalCadastrar() {
     const modalCadastrar = await this.modalController.create({
       component: ModalCadastrarPage,
-      componentProps: {
-        "paramID": 123,
-        "paramTitle": "Test Title"
-      }
-    });
- 
-    modalCadastrar.onDidDismiss().then((dataReturned) => {
-      if (dataReturned !== null) {
-        this.dataReturned = dataReturned.data;
+      componentProps: {     
       }
     });
  
     return await modalCadastrar.present();
   }
 
+  //FUNÇÃO PARA ABRIR MODAL DE VISUALIZAR ESTUDANTES
   async openModalVisualizar() {
     const modalVisualizar = await this.modalController.create({
       component: ModalVisualizarPage,
-      componentProps: {
-        "paramID": 123,
-        "paramTitle": "Test Title"
+      componentProps: {   
       }
     });
- 
-    modalVisualizar.onDidDismiss().then((dataReturned) => {
-      if (dataReturned !== null) {
-        this.dataReturned = dataReturned.data;
-      }
-    });
- 
+  
     return await modalVisualizar.present();
   }
 }

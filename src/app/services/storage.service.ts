@@ -19,7 +19,6 @@ export class Estudante {
   cpfMae: number;
   dataPgto: Date;
   modified: number;
-
 }
 
 const ITEMS_KEY = 'my-items';
@@ -31,7 +30,7 @@ export class StorageService {
 
   constructor(private storage: Storage) { }
 
-  // CREATE
+  //ADICIONA NOVOS DADOS
   addItem(item: Estudante): Promise<any> {
     return this.storage.get(ITEMS_KEY).then((items: Estudante[]) => {
       if (items) {
@@ -43,12 +42,12 @@ export class StorageService {
     });
   }
 
-  // READ
+  //CARREGA DADOS
   getItems(): Promise<Estudante[]> {
     return this.storage.get(ITEMS_KEY);
   }
 
-  // UPDATE
+  //ALTERA DADOS
   updateItem(item: Estudante): Promise<any> {
     return this.storage.get(ITEMS_KEY).then((items: Estudante[]) => {
       if (!items || items.length === 0) {
@@ -69,7 +68,7 @@ export class StorageService {
     });
   }
 
-  // DELETE
+  //REMOVE DADOS
   deleteItem(id: number): Promise<Estudante> {
     return this.storage.get(ITEMS_KEY).then((items: Estudante[]) => {
       if (!items || items.length === 0) {

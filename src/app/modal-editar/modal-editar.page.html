@@ -7,7 +7,7 @@
               </ion-col>
               <ion-col>
                   <ion-title>
-                      Editar Estudantes
+                      Editar Estudante
                   </ion-title>
               </ion-col>
               <ion-col>
@@ -25,7 +25,7 @@
 
         <ion-item>
           <ion-label position="stacked">Data de Nascimento <ion-text color="danger">*</ion-text></ion-label>
-          <ion-datetime placeholder="{{estudanteEditar.dataNasc | date: 'dd/MM/yyy' }}" displayFormat="DD/MMMM/YYYY" cancelText="Cancelar" [(ngModel)]="dadosEstudante.dataNasc"></ion-datetime>
+          <ion-datetime placeholder="{{estudanteEditar.dataNasc | date: 'dd/MM/yyy' }}" displayFormat="DD/MMM/YYYY" cancelText="Cancelar" [(ngModel)]="dadosEstudante.dataNasc"></ion-datetime>
         </ion-item>
 
         <ion-item>
@@ -90,7 +90,7 @@
 
         <ion-item>
             <ion-label position="stacked">Data de Pagamento <ion-text color="danger">*</ion-text></ion-label>
-            <ion-datetime placeholder="{{estudanteEditar.dataPgto | date: 'dd/MM/yyy' }}" displayFormat="DD/MMMM/YYYY" cancelText="Cancelar" [(ngModel)]="dadosEstudante.dataPgto"></ion-datetime>
+            <ion-datetime placeholder="{{estudanteEditar.dataPgto | date: 'dd/MM/yyy' }}" displayFormat="DD/MMM/YYYY" cancelText="Cancelar" [(ngModel)]="dadosEstudante.dataPgto"></ion-datetime>
           </ion-item>
 
         <ion-grid>

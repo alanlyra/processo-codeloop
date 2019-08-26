@@ -10,9 +10,7 @@ import { ModalController, NavParams, Platform, ToastController, IonList } from '
 export class ModalEditarPage implements OnInit {
 
   items: Estudante[] = [];
- 
   dadosEstudante: Estudante = <Estudante>{};
-
   estudanteEditar: Estudante = <Estudante>{};
  
   @ViewChild('listaEstudantes', {static: false})listaEstudantes: IonList;
@@ -24,24 +22,25 @@ export class ModalEditarPage implements OnInit {
     });
   }
 
+  //RECEBE OS DADOS DO ESTUDANTE CLICADO DA LISTA NA TELA DE VISUALIZAR
   ngOnInit() {
     console.table(this.navParams);
     this.estudanteEditar = this.navParams.data.estudante;
   }
 
+  //FUNÇÃO PARA FECHAR O MODAL DE EDIÇÃO
   async closeModal() {
     await this.modalController.dismiss();
   }
  
- 
-  // READ
+  //CARREGA OS DADOS DOS ESTUDANTES
   loadItems() {
     this.storageService.getItems().then(items => {
       this.items = items;
     });
   }
  
-  // UPDATE
+  //EDITA OS DADOS DO ESTUDANTE
   updateItem() {
     if(this.dadosEstudante.nome)
       this.estudanteEditar.nome = this.dadosEstudante.nome;

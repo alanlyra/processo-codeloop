@@ -6,6 +6,7 @@ Para iniciar, rode no terminal:
 cd processo-codeloop </br>
 npm install -g ionic </br>
 npm i @ionic/storage </br>
+npm i -g cordova </br>
 ionic cordova plugin add cordova-sqlite-storage </br>
 ionic serve
 

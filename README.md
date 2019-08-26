@@ -11,4 +11,4 @@ ionic cordova plugin add cordova-sqlite-storage </br>
 ionic serve
 
 
-Desenvolvido por Alan Lyray
+Desenvolvido por Alan Lyra

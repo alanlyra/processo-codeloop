@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StorageService, Estudante, GlobalFunctions } from '../services/storage.service';
-import { ModalController, NavParams, Platform, ToastController, IonList } from '@ionic/angular';
+import { ModalController, NavParams, Platform, ToastController, IonList, AlertController } from '@ionic/angular';
 import { ModalEditarPage } from '../modal-editar/modal-editar.page';
 
 @Component({
@@ -16,7 +16,7 @@ export class ModalVisualizarPage {
  
   @ViewChild('listaEstudantes', {static: false})listaEstudantes: IonList;
  
-  constructor(private globalFunctions: GlobalFunctions, private storageService: StorageService, private plt: Platform, private toastController: ToastController, private modalController: ModalController,
+  constructor(private globalFunctions: GlobalFunctions, private storageService: StorageService, public alertController: AlertController, private plt: Platform, private toastController: ToastController, private modalController: ModalController,
     private navParams: NavParams) {
     this.plt.ready().then(() => {
       this.loadItems();
@@ -61,5 +61,24 @@ export class ModalVisualizarPage {
  
     return await modalEditar.present();
   }
- 
+
+  //POPUP DE CONFIRMAÇÃO DE REMOÇÃO DE ESTUDANTE
+  async popupConfirmarRemocao(item: Estudante) {
+    const alert = await this.alertController.create({
+      header: 'Conrfirmar remoção?',     
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary'     
+        }, {
+          text: 'Confirmar',
+          handler: () => {
+            this.deleteItem(item);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
 }
